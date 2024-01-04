@@ -31,17 +31,19 @@ public class Department {
     }
 
     public void addEmployee(Employee employee) {
+        if (employee == null) return;
         if (employeeList.contains(employee)) return;
         removeEmployee(employee);
         employeeList.add(employee);
-        employee.setDepartment(this);
+        employee.department = this;
     }
 
     public void removeEmployee(Employee employee) {
+        if (employee == null) return;
         if (!employeeList.contains(employee)) return;
         if (boss == employee) boss = null;
         employeeList.remove(employee);
-        employee.setDepartment(null);
+        employee.department = null;
     }
 
     public void setBoss(Employee boss) {
