@@ -2,10 +2,12 @@ package ru.sadovskaya.city;
 
 import lombok.Getter;
 import lombok.Setter;
+import ru.sadovskaya.geometry.PolygonalChain;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class City {
     @Getter
@@ -13,7 +15,7 @@ public class City {
     private String name;
     List<Destination> roadTo = new ArrayList<>();
 
-    City(String name, Destination... roadTo) {
+    public City(String name, Destination... roadTo) {
         this.name = name;
         if (roadTo != null) {
             this.roadTo = Arrays.asList(roadTo);
@@ -43,8 +45,10 @@ public class City {
                 return;
             }
         }
-        roadTo.add(new Destination(city, price));
-    } // не работает add, даже просто b.roadTo.add(new ru.sadovskaya.city.Destination(c, 11)); в мэйне
+        List<Destination> roadTo2 = new ArrayList<>(roadTo);
+        roadTo2.add(new Destination(city, price));
+        this.roadTo = roadTo2;
+    }
 
     public List<Destination> getRoadTo() {
         return new ArrayList<>(roadTo);
@@ -54,5 +58,18 @@ public class City {
     public String toString() {
         return "Город " + name +
                 ", дорога: " + roadTo;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.roadTo.size();
+    }
+
+    @Override
+    public final boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (!(obj instanceof City city)) return false;
+        return Objects.equals(this.roadTo, city.roadTo);
     }
 }

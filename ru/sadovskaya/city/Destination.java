@@ -3,6 +3,8 @@ package ru.sadovskaya.city;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Objects;
+
 public class Destination {
     private City destinationCity;
     @Getter
@@ -22,5 +24,19 @@ public class Destination {
     public String toString() {
         return destinationCity.getName() +
                 ": " + price;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.price;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Destination dest = (Destination) obj;
+        return Objects.equals(this.destinationCity, dest.destinationCity)
+                && Objects.equals(this.price, dest.price);
     }
 }
