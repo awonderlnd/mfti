@@ -5,11 +5,12 @@ import ru.sadovskaya.main.Lengthable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class PolygonalChain implements Lengthable {
     List<Point2D> pointList;
 
-    PolygonalChain(Point2D... pointList) {
+    public PolygonalChain(Point2D... pointList) {
         this.pointList = Arrays.asList(pointList);
     }
 
@@ -49,4 +50,19 @@ public class PolygonalChain implements Lengthable {
         }
         return dist;
     }
+
+    @Override
+    public int hashCode() {
+        return this.getPoint(0).getX();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        PolygonalChain poly = (PolygonalChain) obj;
+        return Objects.equals(this.pointList, poly.pointList);
+    }
+
+
 }
