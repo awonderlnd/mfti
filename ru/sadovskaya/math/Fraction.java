@@ -1,9 +1,14 @@
 package ru.sadovskaya.math;
 
-final class Fraction extends Number {
-    private final int num, den;
+import lombok.Getter;
 
-    Fraction(int num, int den) {
+import java.util.Objects;
+
+@Getter
+public class Fraction extends Number implements Cloneable{
+    int num, den;
+
+    public Fraction(int num, int den) {
         if (num == 0) {
             throw new IllegalArgumentException("Числитель не может быть равен 0");
         }
@@ -14,48 +19,40 @@ final class Fraction extends Number {
         this.den = den;
     }
 
-    public int getNum() {
-        return num;
-    }
-
-    public int getDen() {
-        return den;
-    }
-
     @Override
     public String toString() {
         return num + "/" + den;
     }
 
-    Fraction sum(Fraction fr) {
+    public Fraction sum(Fraction fr) {
         return new Fraction(this.num * fr.den + fr.num * this.den, this.den * fr.den);
     }
 
-    Fraction sum(int x) {
+    public Fraction sum(int x) {
         return new Fraction(this.num + x * this.den, this.den);
     }
 
-    Fraction minus(Fraction fr) {
+    public Fraction minus(Fraction fr) {
         return new Fraction(this.num * fr.den - fr.num * this.den, this.den * fr.den);
     }
 
-    Fraction minus(int x) {
+    public Fraction minus(int x) {
         return new Fraction(this.num - x * this.den, this.den);
     }
 
-    Fraction mult(Fraction fr) {
+    public Fraction mult(Fraction fr) {
         return new Fraction(this.num * fr.num, this.den * fr.den);
     }
 
-    Fraction mult(int x) {
+    public Fraction mult(int x) {
         return new Fraction(this.num * x, this.den);
     }
 
-    Fraction div(Fraction fr) {
+    public Fraction div(Fraction fr) {
         return new Fraction(this.num * fr.den, this.den * fr.num);
     }
 
-    Fraction div(int x) {
+    public Fraction div(int x) {
         return new Fraction(this.num, this.den * x);
     }
 
@@ -77,5 +74,27 @@ final class Fraction extends Number {
     @Override
     public double doubleValue() {
         return (double) num / den;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.num;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Fraction fraction = (Fraction) obj;
+        return Objects.equals(this.num, fraction.num) && Objects.equals(this.den, fraction.den);
+    }
+
+    @Override
+    public Fraction clone() {
+        try {
+            return (Fraction) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }
