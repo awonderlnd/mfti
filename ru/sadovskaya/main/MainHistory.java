@@ -706,12 +706,63 @@ public class MainHistory {
         System.out.println(getPolygonal.makePolygonalChain(square, triangle));*/
 
     //3.3.9
-//        ru.sadovskaya.city.City a = new ru.sadovskaya.city.City("A");
-//        ru.sadovskaya.city.City b = new ru.sadovskaya.city.City("B", new ru.sadovskaya.city.Destination(a, 5));
-//        ru.sadovskaya.city.City c = new ru.sadovskaya.city.City("C", new ru.sadovskaya.city.Destination(b, 3));
-//        ru.sadovskaya.city.City d = new ru.sadovskaya.city.City("D", new ru.sadovskaya.city.Destination(a, 6), new ru.sadovskaya.city.Destination(c, 4));
-//        ru.sadovskaya.city.City e = new ru.sadovskaya.city.City("E");
-//        ru.sadovskaya.city.City f = new ru.sadovskaya.city.City("F", new ru.sadovskaya.city.Destination(b, 1), new ru.sadovskaya.city.Destination(e, 2));
+        /*City a = new SmartCity("A");
+        City b = new City("B");
+        City c = new City("C");
+        City d = new SmartCity("D");
+        City e = new City("E");
+        a.addRoadTo(b, 5);
+        a.addRoadTo(c, 6);
+        b.addRoadTo(c, 3);
+        d.addRoadTo(b, 7);
+        d.addRoadTo(e, 4);
+        e.addRoadTo(c, 5);
+        System.out.println(a);
+        System.out.println(b);
+        System.out.println(c);
+        System.out.println(d);
+        System.out.println(e);*/
+    //4.1.3
+        /*Summator summator = new Summator();
+        BigInteger i = new BigInteger("1234567891234567891212345678912345678912");
+        System.out.println(summator.getSum(i, 7, 3.21, (11/3)));*/
 
+    //4.1.4
+        /*args = new String[2];
+        args[0] = "3";
+        args[1] = "3";
+        out.println("Результат возведения " + args[0] + " в степень " +
+                args[1] + " равен " + Pow.getPow(args[0], args[1]));*/
+
+    //4.1.5
+        /*Point2D point = new Point2D(3,7);
+        out.println(point);
+        java.awt.Point point1 = new Point(1,1);
+        out.println(point1);*/
+
+    //4.2.1
+        /*Department depIT = new Department("IT");
+        Department depSales = new Department("Sales");
+        Employee emp1 = new Employee("Alex", depIT);
+        Employee emp2 = new Employee("Max", depIT);
+        depIT.setBoss(emp1);
+        out.println(emp2);
+        depIT.removeEmployee(emp2);
+        out.println(emp1);
+        out.println("Уволили Макса");
+        out.println(emp2);
+        depSales.setBoss(emp2);
+        out.println("Сделали Макса начальником Sales");
+        out.println(depSales);
+        out.println(depSales.getEmployeeList());
+        out.println("--------------------------------------------");
+        out.println("Перевели Алекса в Sales");
+        emp1.setDepartment(depSales);
+        out.println(depIT.getEmployeeList());
+        out.println(depSales.getEmployeeList());
+        out.println("Сделали Алекса боссом IT");
+        depIT.setBoss(emp1);
+        out.println(depIT.getEmployeeList());
+        out.println(depSales.getEmployeeList());*/
 
 }
