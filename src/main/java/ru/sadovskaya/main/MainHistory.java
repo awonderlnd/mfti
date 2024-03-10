@@ -1137,4 +1137,59 @@ public class MainHistory {
             .map(x -> new Pair(x[0], x[1]))
             .collect(Collectors.groupingBy(x -> x.num, Collectors.mapping(x -> x.name, Collectors.toList())));
         System.out.println(res); //{2=[Katya], 3=[Petia], 5=[Vasia, Anna]}*/
+    //7.1.1
+//        Entity2 entity2 = new Entity2();
+//        List<Field> fields = fieldCollection(entity2);
+//        for (Field f : fields) {
+//            System.out.println(f.getName());
+//        }
+//
+//        //7.1.2
+//        Line line1 = new Line<>(new Point2D(1, 2), new Point2D(3, 4));
+//        Line line2 = new Line<>(new Point2D(5, 6), new Point2D(7, 8));
+//        System.out.println(line1);
+//        System.out.println(line2);
+//        lineConnector(line1, line2);
+//        System.out.println(line1);
+//        System.out.println(line2);
+//        line1.setEnd(new Point2D(9, 10));
+//        System.out.println(line1);
+//        System.out.println(line2);
+//        lineConnector(line1, line2);
+//        System.out.println(line1);
+//        System.out.println(line2);
+//
+//        //7.1.3
+//        System.out.println(entity2);
+//
+//        //7.1.4
+//        Human h1 = new Human("Vasia", 750);
+//        Human h2 = new Human("Petia", 25);
+//        System.out.println(h1);
+//        System.out.println(h2);
+//        validate(h2);
+//        validate(h1);
+//
+//        //7.1.5
+//        ObjectsWriter objectsWriter = new ObjectsWriter("/Users/wonderland/Desktop/test.txt");
+//        objectsWriter.write(new ReadTest("test1", "test1"), new ReadTest("test2", "test2"));
+//        ObjectsReader<ReadTest> reader = new ObjectsReader<>("/Users/wonderland/Desktop/test.txt");
+//        List<ReadTest> list = reader.read();
+//        System.out.println(list);
+//
+//        //7.3.1
+    //System.out.println(collect(Test.class));
+
+    //7.3.2
+//        Test test = new Test();
+//        reset(test);
+//        System.out.println(test);
+
+    //System.out.println(sum(args));
+//        Entity1 entity1 = new Entity1();
+//        System.out.println(entity1);
+//        Entity3 entity3 = new Entity3();
+////        System.out.println(entity3);
+//        Entity4 entity4 = new Entity4();
+//        System.out.println(entity4);
 }
