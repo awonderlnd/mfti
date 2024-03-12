@@ -4,15 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
+@Qualifier("yellowRed")
 @Component
-@Qualifier("red")
-public class RedColor implements Color {
+public class YellowRed implements Color {
 
     @Autowired
-    @Qualifier("startcolor")
+    @Qualifier("red")
     Color nextColor;
 
-    private RedColor() {
+    private YellowRed() {
     }
 
     @Override
@@ -22,6 +22,6 @@ public class RedColor implements Color {
 
     @Override
     public String toString() {
-        return "Red";
+        return "Yellow";
     }
 }

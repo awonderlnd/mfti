@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Scope;
 import ru.sadovskaya.peoples.students.Student;
 
@@ -44,6 +45,7 @@ public class Config {
 
 
     @Bean
+    @Lazy
     public Date origin() {
         return new Date();
     }
@@ -79,21 +81,20 @@ public class Config {
     }
 
     @Bean
-    public Review best() {
-        int random = ac.getBean("unclear", Review.class).grade;
-        int good = ac.getBean("good", Review.class).grade;
-        if (random > good) return ac.getBean("unclear", Review.class);
-        return ac.getBean("good", Review.class);
+    @Scope("prototype")
+    public Review best(List<Review> list) {
+        list.sort((o1, o2) -> o2.grade - o1.grade);
+        return list.get(0);
     }
 
     @Bean
-    public Student student1(String name, Predicate<Integer> range) {
-        return new Student(name, range);
+    public Student student1(Predicate<Integer> range) {
+        return new Student("name1", range);
     }
 
     @Bean
-    public Student student2(String name, Predicate<Integer> range, int... grades) {
-        return new Student(name, range, grades);
+    public Student student2(Predicate<Integer> range, int... grades) {
+        return new Student("name2", range, grades);
     }
 
     @Bean
