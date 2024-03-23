@@ -1,7 +1,6 @@
-package ru.sadovskaya.spring;
+package ru.sadovskaya.postProcessors;
 
 import jakarta.annotation.Nullable;
-import lombok.ToString;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.stereotype.Component;
 import ru.sadovskaya.reflection.Validate;

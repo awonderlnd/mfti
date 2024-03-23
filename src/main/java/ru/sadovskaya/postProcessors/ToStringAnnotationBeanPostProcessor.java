@@ -57,6 +57,4 @@ public class ToStringAnnotationBeanPostProcessor implements BeanPostProcessor {
         });
         return enhancer.create();
     }
-
-
 }

@@ -13,6 +13,7 @@ public class TesterBean {
     @Default("alias")
     String alias;
     @Default("x")
+    @ru.sadovskaya.reflection.ToString
     Integer x;
 }
 
