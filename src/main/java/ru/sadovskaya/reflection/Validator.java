@@ -15,6 +15,7 @@ public class Validator {
                     Object testerObject = cstr.newInstance();
                     Method[] tests = testClass.getDeclaredMethods();
                     for (Method t : tests) {
+                        if (!t.isAnnotationPresent(Test.class)) continue;
                         t.setAccessible(true);
                         t.invoke(testerObject, object);
                     }

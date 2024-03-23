@@ -82,4 +82,14 @@ public class ReflectionUtils {
         }
     }
 
+    public static <T> T cache(T objectIncome){
+
+        ClassLoader objectIncomeClassLoader = objectIncome.getClass().getClassLoader();
+        Class[] objectIncomeInterfaces = objectIncome.getClass().getInterfaces();
+
+        T proxyObject = (T) Proxy.newProxyInstance(objectIncomeClassLoader,
+                objectIncomeInterfaces,
+                new ObjectInvocationHandler<>(objectIncome));
+        return proxyObject;
+    }
 }

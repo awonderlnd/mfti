@@ -1,7 +1,6 @@
 package ru.sadovskaya.reflection;
 
 @Validate(HumanTests.class)
-
 public class HumanTests {
 
     void testAge(Human human) {

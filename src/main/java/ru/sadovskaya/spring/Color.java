@@ -1,4 +1,4 @@
-package ru.sadovskaya.trafficlight;
+package ru.sadovskaya.spring;
 
 public interface Color {
     Color next();

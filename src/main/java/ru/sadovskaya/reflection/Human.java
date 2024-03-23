@@ -3,7 +3,6 @@ package ru.sadovskaya.reflection;
 import lombok.Getter;
 
 @Getter
-@Default
 @Validate(HumanTests.class)
 public class Human {
 

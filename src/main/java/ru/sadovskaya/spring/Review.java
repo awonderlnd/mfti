@@ -1,6 +1,7 @@
 package ru.sadovskaya.spring;
 
 import lombok.Getter;
+import ru.sadovskaya.reflection.ToString;
 
 public class Review {
     public String review;

@@ -1,18 +1,18 @@
-package ru.sadovskaya.trafficlight;
+package ru.sadovskaya.spring;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
+@Qualifier("yellowRed")
 @Component
-@Qualifier("startcolor")
-public class GreenColor implements Color {
+public class YellowRed implements Color {
 
     @Autowired
-    @Qualifier("yellowGreen")
+    @Qualifier("red")
     Color nextColor;
 
-    private GreenColor() {
+    private YellowRed() {
     }
 
     @Override
@@ -22,6 +22,6 @@ public class GreenColor implements Color {
 
     @Override
     public String toString() {
-        return "Green";
+        return "Yellow";
     }
 }

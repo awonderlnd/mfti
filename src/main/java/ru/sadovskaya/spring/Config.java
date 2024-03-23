@@ -1,5 +1,7 @@
 package ru.sadovskaya.spring;
 
+import jakarta.annotation.PostConstruct;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -7,12 +9,16 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Scope;
 import ru.sadovskaya.peoples.students.Student;
+import ru.sadovskaya.reflection.Default;
+import ru.sadovskaya.reflection.ToString;
 
 import java.util.*;
 import java.util.function.Predicate;
 
 @Configuration
 public class Config {
+    @Getter
+    public String name = "";
     @Autowired
     ApplicationContext ac;
 
@@ -27,22 +33,7 @@ public class Config {
         Random random = new Random();
         return random.nextInt(max - min + 1) + min;
         //не додумалась как уникальные из диапазона выкидывать
-
     }
-
-//    @Bean
-//    @Scope("prototype")
-//    public int random2(int min, int max) {
-//        ArrayList<Integer> integers = new ArrayList<>();
-//        for (int i = min; i <= max; i++) {
-//            integers.add(i);
-//        }
-//        int n = (int) Math.floor(Math.random() * integers.size());
-//        int tmp = n;
-//        integers.remove(n);
-//        return tmp;
-//    }
-
 
     @Bean
     @Lazy
@@ -100,5 +91,13 @@ public class Config {
     @Bean
     public StudentBuilder studentBuilder() {
         return new StudentBuilder();
+    }
+
+    @Override
+    public String toString() {
+        return "Config{" +
+                "name='" + name + '\'' +
+                ", ac=" + ac +
+                '}';
     }
 }
