@@ -1,23 +1,23 @@
 package ru.sadovskaya.main;
 
 import lombok.SneakyThrows;
-import lombok.ToString;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.stereotype.Component;
+import ru.sadovskaya.jdbc.DAO;
+import ru.sadovskaya.jdbc.Department;
+import ru.sadovskaya.jdbc.Employee;
+import ru.sadovskaya.jdbc.EmployeeDAO;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
 
 public class Main {
     @SneakyThrows
     public static void main(String[] args) {
-
-        ApplicationContext ctx =
-                new AnnotationConfigApplicationContext("ru.sadovskaya.postProcessors");
-
-        System.out.println(ctx.getBean("random"));
-        System.out.println(ctx.getBean("testerBean"));
-
-        //Arrays.stream(ctx.getBeanDefinitionNames()).forEach(System.out::println);
-
+        Connection con = DriverManager.getConnection("jdbc:h2:.\\Office");
+//        EmployeeDAO employeeDAO = new EmployeeDAO(con);
+//        System.out.println(employeeDAO.getEmployee());
+        DAO<Department> departmentDAO = new DAO<>(con, Department.class);
+        System.out.println(departmentDAO.get());
+        con.close();
     }
 
     public static int sum(String... args) {
