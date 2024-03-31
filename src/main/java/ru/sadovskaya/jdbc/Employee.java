@@ -1,22 +1,37 @@
 package ru.sadovskaya.jdbc;
 
-import lombok.AllArgsConstructor;
+import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@ToString
+
 @Setter
 @Getter
-
+@ToString
+@Entity
+@Table(name = "employee")
 public class Employee {
-    int ID;
-    String NAME;
-    int DepartmentID;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Integer id;
 
-    public Employee(int ID, String NAME, int departmentID) {
-        this.ID = ID;
-        this.NAME = NAME;
-        DepartmentID = departmentID;
+    @Column(name = "name")
+    private String name;
+
+    @ManyToOne
+    @JoinColumn(name = "departmentid")
+    private Department department;
+
+    public Employee(int id, String name, Department department) {
+        this.id = id;
+        this.name = name;
+        this.department = department;
     }
+
+    public Employee() {
+    }
+
 }

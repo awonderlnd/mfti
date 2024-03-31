@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Creator {
+public class DBCreator {
     public static void createDB() {
         try (Connection con = DriverManager.getConnection("jdbc:h2:.\\Office")) {
             Statement stm = con.createStatement();
